@@ -44,7 +44,7 @@ jobs:
         name: Build, and push if tagged
         uses: docker/build-push-action@v3
         with:
-          push: ${{ github.event_name == 'push tag' }}
+          push: ${{ github.event_name == 'push_tag' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
