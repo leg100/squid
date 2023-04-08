@@ -2,6 +2,12 @@
 
 set -e
 
+# if cert and key not found then generate them.
+if [[ ! -e /etc/squid/certs/cert.pem ]] && [[ ! -e /etc/squid/certs/key.pem ]]
+then
+    openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout /etc/squid/certs/key.pem -out /etc/squid/certs/cert.pem -subj "/CN=localhost"
+fi
+
 # permit squid to write to mounted cache dir
 chown -R squid:squid /var/cache/squid/
 

@@ -1,6 +1,6 @@
 FROM alpine:3.17
 
-RUN apk add --no-cache squid
+RUN apk add --no-cache squid openssl
 
 # permit squid to write to stdout
 RUN addgroup squid tty
